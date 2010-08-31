@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8"/>
+	<title>说在最前面</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+			line-height: 1.5;
+			box-sizing: border-box;
+			-webkit-box-sizing: border-box;
+			-moz-box-sizing: border-box;
+			-webkit-transition-duration:.15s;
+			-moz-transition-duration:.15s;
+			transition-duration:.15s;
+			-webkit-transition-timing-function:ease-out;
+			-moz-transition-timing-function:ease-out;
+			transition-timing-function:ease-out;
+		}
+		body{
+			font: normal normal normal 14px/normal Candara, 微软雅黑, Verdana, sans-serif;
+		}
+		#presentation{
+			color:#404040;
+			width: 1920px;
+			height: 1080px;
+			overflow-y:hidden;
+			background:-webkit-gradient(linear,left top,right bottom,from(#054F7C),to(#fff));
+			background:-moz-linear-gradient(-45deg,#054F7C,#fff);
+		}
+		#presentation a{
+			color: #054F7C;
+			text-decoration: none;
+		}
+		#presentation a:hover{
+			text-decoration: underline;
+		}
+		#catelog{
+			float:left;
+			width: 350px;
+			background: #fff;
+			height: 980px;
+			margin: 50px;
+			margin-right: 0;
+			padding-top: 20px;
+			padding-left: 40px;
+			opacity:.7;
+		}
+		#catelog a{
+			text-decoration: none;
+			color: #404040;
+			-moz-border-radius: 5px;
+			-webkit-border-radius: 5px;
+			border-radius: 5px;
+			outline:none;
+		}
+		#catelog a:hover{
+			background: #29589B;
+			color: #fff;
+			padding: 0 10px;
+		}
+		#catelog ul{
+			font-size: 25px;
+			list-style-position:inside;
+			list-style-type:cjk-ideographic;
+		}
+		#catelog ul ul{
+			margin-left: 20px;
+			list-style-type:decimal;
+		}
+		#catelog ul ul ul{
+			margin-left: 20px;
+			list-style-type:lower-alpha;
+		}
+		.slide,#catelog,section .img img{
+			text-shadow: rgba(0, 0, 0, 0.4) 3px 3px 5px;
+			-moz-border-radius: 5px;
+			-webkit-border-radius: 5px;
+			border-radius: 5px;
+			-moz-box-shadow:3px 3px 5px #333;
+			-webkit-box-shadow:3px 3px 5px #333;
+			box-shadow:3px 3px 5px #333;
+		}
+		#slides{
+			font-size: 35px;
+			float:right;
+			-webkit-transition-duration:.3s;
+			-moz-transition-duration:.3s;
+			transition-duration:.3s;
+			padding: 50px 50px 0;
+		}
+		.slide{
+			background: #fff;
+			width: 1420px;
+			height: 980px;
+			padding: 50px;
+			margin-bottom: 100px;
+			overflow:hidden;
+			opacity:.7;
+			position:relative;
+		}
+		.counter{
+			position:absolute;
+			bottom:50px;
+			right:80px;
+			opacity:.5;
+		}
+		.slide:first-child .counter{
+			display:none;
+		}
+		h1,h2,header{
+			text-align: center;
+			font-weight: bold;
+		}
+		h1{
+			font-size: 80px;
+			margin: 200px 20px 100px;;
+		}
+		h2{
+			font-size: 60px;
+			margin: 400px 20px 100px;;
+		}
+		#prev,#next{
+			width: 1120px;
+			height:30px;
+			margin: 0 200px;
+			font-size: 40px;
+			position:fixed;
+			right:0px;
+			top:0px;
+			text-align: center;
+			background: #000;
+			color:#fff;
+			opacity:0;
+			cursor:pointer;
+			-moz-border-radius: 5px;
+			-webkit-border-radius: 5px;
+			border-radius: 5px;
+		}
+		#prev:hover,#next:hover{
+			opacity:0.4;
+			height:60px;
+		}
+		#next{
+			top:auto;
+			bottom:0px;
+		}
+		header{
+			font-size: 60px;
+			text-align: left;
+			padding:0 20px;
+		}
+		section{
+			padding: 50px;
+		}
+		.intro{text-align: center;}
+		p{
+			margin: 20px 50px;
+		}
+		section.intro p{
+			margin: 50px auto;
+		}
+		section.intro p.author{
+			margin-bottom: -50px;
+		}
+		section ul{
+			margin-left: 150px;
+		}
+		section p{
+			line-height: 1.3;
+			margin-top: 30px;
+		}
+		section .img{
+			width: 350px;
+			float:right;
+			margin-left:50px;
+			color: #606060;
+			text-decoration: none;
+			font-size: 20px;
+			text-align: center;
+		}
+		section .img img{
+			width: 350px;
+		}
+</style>
+</head>
+<body>
+<div id="presentation">
+<div id="catelog"></div>
+<div id="slides">
+	<div class="slide">
+		<section class="intro">
+			<h1>说在最前面</h1>
+			<p class="author">Shawphy</p>
+			<p>shawphy&copy;gmail.com</p>
+			<p>2010/08</p>
+		</section>
+	</div>
+	<div class="slide">
+		<header>自我介绍</header>
+		<section>
+			<p>姓名：Shawphy</p>
+			<p>联系方式：
+				<ul>
+					<li>Email：shawphy&copy;gmail.com</li>
+					<li>Twitter：@shawphy</li>
+					<li>Blog: <a href="http://shawphy.com">shawphy.com</a></li>
+				</ul>
+			</p>
+		</section>
+	</div>
+	<div class="slide">
+		<h2>关于物理学</h2>
+	</div>
+	<div class="slide">
+		<header>什么是物理</header>
+		<section>
+			<p>上知天文下知地理</p>
+			<p>物理是研究大自然现象及规律的学科</p>
+			<p>现代，物理学已经成为自然科学中最基础的学科之一</p>
+			<p>物理学与其他许多自然科学息息相关： <br />  如天文学、地质学、生物学，特别是化学。</p>
+			<p>化学与某些物理学领域的关系深远，如量子力学、热力学和电磁学。</p>
+		</section>
+	</div>
+	<div class="slide">
+		<h3>古希腊时期</h3>
+		<section>
+			<p>自然哲学——哲学中蕴含的科学</p>
+			<p>至今保留 Ph.D —— 哲学博士</p>
+			<p>代表人物：
+				<ul>
+					<li>亚里士多德</li>
+					<li>阿基米德</li>
+					<li>托勒密</li>
+				</ul>
+			</p>
+		</section>
+	</div>
+	<div class="slide">
+		<header>亚里士多德</header>
+		<section>
+			<a href="http://zh.wikipedia.org/zh-cn/亚里士多德" class="img"><img src="http://upload.wikimedia.org/wikipedia/commons/thumb/a/ae/Aristotle_Altemps_Inv8575.jpg/200px-Aristotle_Altemps_Inv8575.jpg" alt="亚里士多德" /></a>
+			<p>古希腊三大哲人：苏格拉底->柏拉图->亚里士多德</p>
+			<p>亚历山大大帝的老师</p>
+			<p>研究领域：</p>
+			<p>科学上 <br />解剖学、天文学、经济学、胚胎学、地理学、地质学、气象学、物理学、和动物学。</p>
+			<p>哲学 <br />美学、伦理学、政治、政府、形而上学、心理学、以及神学。</p>
+			<p>其他 <br />教育、文学、以及诗歌。</p>
+		</section>
+	</div>
+	<div class="slide">
+		<header>阿基米德</header>
+		<section>
+			<a href="http://zh.wikipedia.org/zh-cn/阿基米德" class="img"><img src="http://upload.wikimedia.org/wikipedia/commons/thumb/e/e7/Domenico-Fetti_Archimedes_1620.jpg/200px-Domenico-Fetti_Archimedes_1620.jpg" alt="阿基米德" />《沉思的阿基米德》，费地（1620）</a>
+		</section>
+	</div>
+	<div class="slide">
+		<header>托勒密</header>
+		<section>
+			<a href="http://zh.wikipedia.org/zh-cn/托勒密" class="img"><img src="http://upload.wikimedia.org/wikipedia/commons/thumb/1/16/Ptolemy_16century.jpg/220px-Ptolemy_16century.jpg" alt="托勒密画像" />托勒密画像，画于16世纪</a>
+			<p>《天文学大成》十三卷。 <br />其中确定了一年的持续时间，编制了星表，说明旋进、折射引起的修正，给出日月食的计算方法等。</p>
+			<p>《地理学指南》八卷 <br />是他所绘的世界地图的说明书，其中也讨论到天文学原则。</p>
+			<p>《光学》五卷 <br />可见条件、双眼效应、平面镜曲面镜反射、大气折射、两小儿辩日</p>
+
+		</section>
+	</div>
+	<div class="slide">
+		<h3>文艺复兴之后</h3>
+		<section>
+			<p>文艺复兴：14世纪至17世纪</p>
+			<ul>
+				<li>运动学</li>
+				<li>经典力学</li>
+				<li>热力学</li>
+			</ul>
+			<p>第一次工业革命（18世纪中叶到19世纪初）</p>
+			<p>人类进入机器时代，英国人瓦特改良蒸汽机为标志</p>
+			<ul>
+				<li>电磁学</li>
+			</ul>
+			<p>第二次工业革命（1820年至1914年）</p>
+			<p>人类进入电气时代，以电灯的发明为标志</p>
+			<ul>
+				<li>电磁学完善</li>
+			</ul>
+		</section>
+	</div>
+	<div class="slide">
+		<header>h</header>
+		<section>
+			<p>xxx</p>
+		</section>
+	</div>
+	<div class="slide">
+		<header>h</header>
+		<section>
+			<p>xxx</p>
+		</section>
+	</div>
+	<div class="slide">
+		<h2>说在最后</h2>
+	</div>
+</div>
+<!-- slides -->
+</div>
+<div id="prev">Prev</div>
+<div id="next">Next</div>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+<script src="jquery.mousewheel.min.js"></script>
+<script>
+	var page=window.location.hash.replace("#slide-","")||1;
+	$("#slides").css({"margin-top":(1080*(1-page))});
+	var counter=$(".slide").length;
+	$(".slide").each(function(i){
+		$(this).append("<span class='counter'>"+(i+1)+"/"+counter+"</span>");
+	});
+
+	$("#catelog").click(function(e){
+		if($(e.target).is("a")){
+			$("#slides").css({"margin-top":(1080*(1-$(e.target).attr("href").replace("#slide-","")))});
+		}
+	});
+	var animated=false;
+	$("#prev").click(function(){
+		if(animated)return;
+		if (parseInt($("#slides").css("margin-top"))==0)return;
+		animated=true;
+		$("#slides").animate({"margin-top":"+=1080"},0);
+		page--;
+		window.location.hash="#slide-"+page;
+		setTimeout(function(){animated=false},400)
+	});
+	$("#next").click(function(){
+		if(animated)return;
+		if (parseInt($("#slides").css("margin-top"))==(-$("#slides").height()+1080))return;
+		animated=true;
+		$("#slides").animate({"margin-top":"-=1080"},0);
+		page++;
+		window.location.hash="#slide-"+page;
+		setTimeout(function(){animated=false},400)
+	});
+	$(document).keypress(function(e){
+		if(e.which==8){
+			$("#prev").click();
+			return false;
+		};
+		if(e.which==32){
+			$("#next").click();
+			return false;
+		};
+	}).mousewheel(function(e,d){
+		if (d>0){
+			$("#prev").click();
+		}else if(d<0){
+			$("#next").click();
+		}
+		return false;
+	});
+	var deep=0,str=["<ul>"];
+	$("#slides").find("h1,h2,h3,header").each(function(i,e){
+		if ((e.tagName=="H1"||e.tagName=="H2")&&deep==0){
+			str.push("<li><a href='#slide-"+(i+1)+"'>"+$(e).text()+"</a>");
+			return;
+		}
+		if ((e.tagName=="H1"||e.tagName=="H2")&&deep!=0){
+			deep--;
+			str.push("</ul></li><li><a href='#slide-"+(i+1)+"'>"+$(e).text()+"</a>");
+			return;
+		}
+		if (e.tagName=="H3"&&deep==1){
+			deep++;
+			str.push("<li><a href='#slide-"+(i+1)+"'>"+$(e).text()+"</a>");
+			return;
+		}
+		if (e.tagName=="H3"&&deep<1){
+			deep++;
+			str.push("<ul><li><a href='#slide-"+(i+1)+"'>"+$(e).text()+"</a>"+"</li>");
+			return;
+		}
+		if (e.tagName=="H3"&&deep>1){
+			deep--;
+			str.push("</ul></li><li><a href='#slide-"+(i+1)+"'>"+$(e).text()+"</a>");
+			return;
+		}
+		if (e.tagName=="HEADER"&&deep>2){
+			str.push("<li><a href='#slide-"+(i+1)+"'>"+$(e).text()+"</a>"+"</li>");
+			return;
+		}
+		if (e.tagName=="HEADER"){
+			deep++;
+			str.push("<ul><li><a href='#slide-"+(i+1)+"'>"+$(e).text()+"</a>"+"</li>");
+			return;
+		}
+	});
+	if(deep==3){str.push("</ul></li>")}
+	str.push("</ul>");
+	$("#catelog").html(str.join(""));
+</script>
+</body>
+</html>
