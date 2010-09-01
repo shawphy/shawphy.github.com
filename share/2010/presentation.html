@@ -357,44 +357,30 @@
 		}
 		return false;
 	});
-	var deep=0,str=["<ul>"];
+	var deep=0,lasttag="",str=["<ul>"];
 	$("#slides").find("h1,h2,h3,header").each(function(i,e){
 		if ((e.tagName=="H1"||e.tagName=="H2")&&deep==0){
 			str.push("<li><a href='#slide-"+(i+1)+"'>"+$(e).text()+"</a>");
-			return;
-		}
-		if ((e.tagName=="H1"||e.tagName=="H2")&&deep!=0){
+		}else if ((e.tagName=="H1"||e.tagName=="H2")&&deep!=0){
+			for (;deep>0 ;deep-- )str.push("</li></ul>");
+			str.push("</li><li><a href='#slide-"+(i+1)+"'>"+$(e).text()+"</a>");
+		}else if (e.tagName=="H3"&&deep==1){
+			str.push("</li><li><a href='#slide-"+(i+1)+"'>"+$(e).text()+"</a>");
+		}else if (e.tagName=="H3"&&deep<1){
+			deep++;
+			str.push("</li></ul><ul><li><a href='#slide-"+(i+1)+"'>"+$(e).text()+"</a>");
+		}else if (e.tagName=="H3"&&deep>1){
 			deep--;
-			str.push("</ul></li><li><a href='#slide-"+(i+1)+"'>"+$(e).text()+"</a>");
-			return;
-		}
-		if (e.tagName=="H3"&&deep==1){
+			str.push("</li></ul></li><li><a href='#slide-"+(i+1)+"'>"+$(e).text()+"</a>");
+		}else if (e.tagName=="HEADER"&&lasttag=="HEADER"){
+			str.push("</li><li><a href='#slide-"+(i+1)+"'>"+$(e).text()+"</a>");
+		}else if (e.tagName=="HEADER"){
 			deep++;
-			str.push("<li><a href='#slide-"+(i+1)+"'>"+$(e).text()+"</a>");
-			return;
+			str.push("<ul><li><a href='#slide-"+(i+1)+"'>"+$(e).text()+"</a>");
 		}
-		if (e.tagName=="H3"&&deep<1){
-			deep++;
-			str.push("<ul><li><a href='#slide-"+(i+1)+"'>"+$(e).text()+"</a>"+"</li>");
-			return;
-		}
-		if (e.tagName=="H3"&&deep>1){
-			deep--;
-			str.push("</ul></li><li><a href='#slide-"+(i+1)+"'>"+$(e).text()+"</a>");
-			return;
-		}
-		if (e.tagName=="HEADER"&&deep>2){
-			str.push("<li><a href='#slide-"+(i+1)+"'>"+$(e).text()+"</a>"+"</li>");
-			return;
-		}
-		if (e.tagName=="HEADER"){
-			deep++;
-			str.push("<ul><li><a href='#slide-"+(i+1)+"'>"+$(e).text()+"</a>"+"</li>");
-			return;
-		}
+		lasttag=e.tagName;
 	});
-	if(deep==3){str.push("</ul></li>")}
-	str.push("</ul>");
+	for (;deep>=0 ;deep-- )str.push("</li></ul>");
 	$("#catelog").html(str.join(""));
 </script>
 </body>
