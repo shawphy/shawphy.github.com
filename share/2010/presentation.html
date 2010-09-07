@@ -20,12 +20,13 @@
 		}
 		body{
 			font: normal normal normal 14px/normal Candara, 微软雅黑, Verdana, sans-serif;
+			overflow:hidden;
 		}
 		#presentation{
 			color:#404040;
 			width: 1920px;
-			height: 1080px;
-			overflow-y:hidden;
+			height: 1200px;
+			overflow:hidden;
 			background:-webkit-gradient(linear,left top,right bottom,from(#054F7C),to(#fff));
 			background:-moz-linear-gradient(-45deg,#054F7C,#fff);
 		}
@@ -33,7 +34,7 @@
 			float:left;
 			width: 350px;
 			background: #fff;
-			height: 980px;
+			height: 1100px;
 			margin: 50px;
 			margin-right: 0;
 			padding-top: 20px;
@@ -48,7 +49,10 @@
 			border-radius: 5px;
 			outline:none;
 		}
-		#catelog a:hover{
+		#catelog a.past{
+			color: #999;
+		}
+		#catelog a.current,#catelog a:hover{
 			background: #29589B;
 			color: #fff;
 			padding: 0 10px;
@@ -65,40 +69,41 @@
 		#catelog ul ul ul{
 			margin-left: 20px;
 			list-style-type:lower-alpha;
+			/*display:none;*/
 		}
 		.slide,#catelog,section .img img{
-			text-shadow: rgba(0, 0, 0, 0.4) 3px 3px 5px;
-			-moz-border-radius: 5px;
-			-webkit-border-radius: 5px;
-			border-radius: 5px;
-			-moz-box-shadow:3px 3px 5px #333;
-			-webkit-box-shadow:3px 3px 5px #333;
-			box-shadow:3px 3px 5px #333;
+			text-shadow: rgba(0, 0, 0, 0.4) 5px 5px 10px;
+			-moz-border-radius: 10px;
+			-webkit-border-radius: 10px;
+			border-radius: 10px;
+			-moz-box-shadow:5px 5px 10px #333;
+			-webkit-box-shadow:5px 5px 10px #333;
+			box-shadow:5px 5px 10px #333;
 		}
 		#slides{
-			font-size: 35px;
+			font-size: 60px;
 			float:right;
+			padding: 50px 50px 0;
+		}
+		.slide{
 			-webkit-transition-duration:.3s;
 			-moz-transition-duration:.3s;
 			transition-duration:.3s;
-			padding: 50px 50px 0;
-		}
-		#slides a{
-			color: #054F7C;
-			text-decoration: none;
-		}
-		#slides a:hover{
-			text-decoration: underline;
-		}
-		.slide{
 			background: #fff;
 			width: 1420px;
-			height: 980px;
+			height: 1100px;
 			padding: 50px;
 			margin-bottom: 100px;
 			overflow:hidden;
 			opacity:.7;
 			position:relative;
+		}
+		.slide.past{
+			opacity:0;
+			width:1px;
+			height: 0;
+			padding: 0;
+			margin-bottom: 0;
 		}
 		.counter{
 			position:absolute;
@@ -114,11 +119,11 @@
 			font-weight: bold;
 		}
 		h1{
-			font-size: 80px;
+			font-size: 120px;
 			margin: 200px 20px 100px;;
 		}
 		h2{
-			font-size: 60px;
+			font-size: 100px;
 			margin: 400px 20px 100px;;
 		}
 		#prev,#next{
@@ -134,9 +139,9 @@
 			color:#fff;
 			opacity:0;
 			cursor:pointer;
-			-moz-border-radius: 5px;
-			-webkit-border-radius: 5px;
-			border-radius: 5px;
+			-moz-border-radius: 10px;
+			-webkit-border-radius: 10px;
+			border-radius: 10px;
 		}
 		#prev:hover,#next:hover{
 			opacity:0.4;
@@ -146,8 +151,8 @@
 			top:auto;
 			bottom:0px;
 		}
-		header{
-			font-size: 60px;
+		h3,header{
+			font-size: 80px;
 			text-align: left;
 			padding:0 20px;
 		}
@@ -167,12 +172,15 @@
 		section ul{
 			margin-left: 150px;
 		}
+		section ul ul{
+			margin-left: 80px;
+		}
 		section p{
 			line-height: 1.3;
 			margin-top: 30px;
 		}
 		section .img{
-			width: 350px;
+			width: 550px;
 			float:right;
 			margin-left:50px;
 			color: #606060;
@@ -181,9 +189,12 @@
 			text-align: center;
 		}
 		section .img img{
-			width: 350px;
+			width: 550px;
 		}
-</style>
+		section .step{opacity:0;}
+		strong{
+			border-bottom: 5px solid #606060;
+		}</style>
 </head>
 <body>
 <div id="presentation">
@@ -191,115 +202,185 @@
 <div id="slides">
 	<div class="slide">
 		<section class="intro">
-			<h1>说在最前面</h1>
+			<h1>HTML 5</h1>
 			<p class="author">Shawphy</p>
 			<p>shawphy&copy;gmail.com</p>
 			<p>2010/08</p>
 		</section>
 	</div>
 	<div class="slide">
-		<header>自我介绍</header>
+		<header>说在最前面</header>
 		<section>
-			<p>姓名：Shawphy</p>
-			<p>联系方式：
-				<ul>
-					<li>Email：shawphy&copy;gmail.com</li>
-					<li>Twitter：@shawphy</li>
-					<li>Blog: <a href="http://shawphy.com">shawphy.com</a></li>
-				</ul>
-			</p>
+			<p>注意：这份文件仅仅是演示如何用 HTML 5 制作 PPT ，其内容并未经过仔细考量，请勿当真！</p>
 		</section>
 	</div>
 	<div class="slide">
-		<h2>关于物理学</h2>
-	</div>
-	<div class="slide">
-		<header>什么是物理</header>
+		<header>HTML 5 是什么？</header>
 		<section>
-			<p>上知天文下知地理</p>
-			<p>物理是研究大自然现象及规律的学科</p>
-			<p>现代，物理学已经成为自然科学中最基础的学科之一</p>
-			<p>物理学与其他许多自然科学息息相关： <br />  如天文学、地质学、生物学，特别是化学。</p>
-			<p>化学与某些物理学领域的关系深远，如量子力学、热力学和电磁学。</p>
+			<p class="step">网页 = 结构 + 表现 + 行为</p>
+			<p class="step">HTML5 ~= HTML 标签 + CSS 3 + JS API</p>
 		</section>
 	</div>
 	<div class="slide">
-		<h3>古希腊时期</h3>
+		<h2>HTML 标签</h2>
+	</div>
+	<div class="slide">
+		<header>简化标签</header>
 		<section>
-			<p>自然哲学——哲学中蕴含的科学</p>
-			<p>至今保留 Ph.D —— 哲学博士</p>
-			<p>代表人物：
-				<ul>
-					<li>亚里士多德</li>
-					<li>阿基米德</li>
-					<li>托勒密</li>
-				</ul>
-			</p>
+			<p class="step">Doctype</p>
+			<p class="step">html</p>
+			<p class="step">charset</p>
+			<p class="step">link</p>
+			<p class="step">script</p>
+			<p class="step">style</p>
 		</section>
 	</div>
 	<div class="slide">
-		<header>亚里士多德</header>
+		<header>语义化标签</header>
 		<section>
-			<a href="http://zh.wikipedia.org/zh-cn/亚里士多德" class="img"><img src="http://upload.wikimedia.org/wikipedia/commons/thumb/a/ae/Aristotle_Altemps_Inv8575.jpg/200px-Aristotle_Altemps_Inv8575.jpg" alt="亚里士多德" /></a>
-			<p>古希腊三大哲人：苏格拉底->柏拉图->亚里士多德</p>
-			<p>亚历山大大帝的老师</p>
-			<p>研究领域：</p>
-			<p>科学上 <br />解剖学、天文学、经济学、胚胎学、地理学、地质学、气象学、物理学、和动物学。</p>
-			<p>哲学 <br />美学、伦理学、政治、政府、形而上学、心理学、以及神学。</p>
-			<p>其他 <br />教育、文学、以及诗歌。</p>
+			<a href="#" class="img"><img src="http://omarlara.com/wp-content/uploads/2010/02/html5.gif" alt="HTM4与HTML5对比" />HTM4与HTML5对比</a>
+			<p class="step">nav</p>
+			<p class="step">header</p>
+			<p class="step">footer</p>
+			<p class="step">menu</p>
+			<p class="step">section</p>
+			<p class="step">...</p>
 		</section>
 	</div>
 	<div class="slide">
-		<header>阿基米德</header>
+		<h3>表单控件</h3>
 		<section>
-			<a href="http://zh.wikipedia.org/zh-cn/阿基米德" class="img"><img src="http://upload.wikimedia.org/wikipedia/commons/thumb/e/e7/Domenico-Fetti_Archimedes_1620.jpg/200px-Domenico-Fetti_Archimedes_1620.jpg" alt="阿基米德" />《沉思的阿基米德》，费地（1620）</a>
+			<p class="step">占位符</p>
+			<p class="step">输入控件</p>
+			<p class="step">正则匹配验证规则</p>
+			<p class="step">...</p>
+			<p class="step">...</p>
+			<p class="step">...</p>
 		</section>
 	</div>
 	<div class="slide">
-		<header>托勒密</header>
+		<header>占位符</header>
 		<section>
-			<a href="http://zh.wikipedia.org/zh-cn/托勒密" class="img"><img src="http://upload.wikimedia.org/wikipedia/commons/thumb/1/16/Ptolemy_16century.jpg/220px-Ptolemy_16century.jpg" alt="托勒密画像" />托勒密画像，画于16世纪</a>
-			<p>《天文学大成》十三卷。 <br />其中确定了一年的持续时间，编制了星表，说明旋进、折射引起的修正，给出日月食的计算方法等。</p>
-			<p>《地理学指南》八卷 <br />是他所绘的世界地图的说明书，其中也讨论到天文学原则。</p>
-			<p>《光学》五卷 <br />可见条件、双眼效应、平面镜曲面镜反射、大气折射、两小儿辩日</p>
-
+			<p class="step">...</p>
+			<p class="step">...</p>
+			<p class="step">...</p>
 		</section>
 	</div>
 	<div class="slide">
-		<h3>文艺复兴之后</h3>
+		<header>输入控件</header>
 		<section>
-			<p>文艺复兴：14世纪至17世纪</p>
-			<ul>
-				<li>运动学</li>
-				<li>经典力学</li>
-				<li>热力学</li>
-			</ul>
-			<p>第一次工业革命（18世纪中叶到19世纪初）</p>
-			<p>人类进入机器时代，英国人瓦特改良蒸汽机为标志</p>
-			<ul>
-				<li>电磁学</li>
-			</ul>
-			<p>第二次工业革命（1820年至1914年）</p>
-			<p>人类进入电气时代，以电灯的发明为标志</p>
-			<ul>
-				<li>电磁学完善</li>
-			</ul>
+			<p class="step">...</p>
+			<p class="step">...</p>
+			<p class="step">...</p>
 		</section>
 	</div>
 	<div class="slide">
-		<header>h</header>
+		<header>正则匹配验证规则</header>
+		<section>
+			<p class="step">...</p>
+			<p class="step">...</p>
+			<p class="step">...</p>
+		</section>
+	</div>
+	<div class="slide">
+		<h3>无障碍标签</h3>
+		<section>
+			<p class="step">...</p>
+			<p class="step">...</p>
+			<p class="step">...</p>
+		</section>
+	</div>
+	<div class="slide">
+		<h2>CSS 3</h2>
+	</div>
+	<div class="slide">
+		<header>选择器</header>
 		<section>
 			<p>xxx</p>
 		</section>
 	</div>
 	<div class="slide">
-		<header>h</header>
+		<h3>布局元素</h3>
 		<section>
-			<p>xxx</p>
+			<p class="step">box-sizing</p>
+			<p class="step">列布局</p>
 		</section>
 	</div>
 	<div class="slide">
-		<h2>说在最后</h2>
+		<header>box-sizing</header>
+		<section>
+			<p class="step">...</p>
+			<p class="step">...</p>
+			<p class="step">...</p>
+		</section>
+	</div>
+	<div class="slide">
+		<header>列布局</header>
+		<section>
+			<p class="step">...</p>
+			<p class="step">...</p>
+			<p class="step">...</p>
+		</section>
+	</div>
+	<div class="slide">
+		<h3>视觉效果</h3>
+		<section>
+			<p class="step">颜色</p>
+			<p class="step">盒模型效果</p>
+			<p class="step">背景效果</p>
+			<p class="step">文字效果</p>
+		</section>
+	</div>
+	<div class="slide">
+		<header>颜色</header>
+		<section>
+			<p class="step">...</p>
+			<p class="step">...</p>
+			<p class="step">...</p>
+		</section>
+	</div>
+	<div class="slide">
+		<header>盒模型效果</header>
+		<section>
+			<p class="step">...</p>
+			<p class="step">...</p>
+			<p class="step">...</p>
+		</section>
+	</div>
+	<div class="slide">
+		<header>背景效果</header>
+		<section>
+			<p class="step">...</p>
+			<p class="step">...</p>
+			<p class="step">...</p>
+		</section>
+	</div>
+	<div class="slide">
+		<header>文字效果</header>
+		<section>
+			<p class="step">...</p>
+			<p class="step">...</p>
+			<p class="step">...</p>
+		</section>
+	</div>
+	<div class="slide">
+		<h2>API</h2>
+	</div>
+	<div class="slide">
+		<header>离线存储</header>
+		<section>
+			<p class="step">...</p>
+			<p class="step">...</p>
+			<p class="step">...</p>
+		</section>
+	</div>
+	<div class="slide">
+		<header>跨域</header>
+		<section>
+			<p class="step">...</p>
+			<p class="step">...</p>
+			<p class="step">...</p>
+		</section>
 	</div>
 </div>
 <!-- slides -->
@@ -309,34 +390,58 @@
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
 <script src="jquery.mousewheel.min.js"></script>
 <script>
-	var page=window.location.hash.replace("#slide-","")||1;
-	$("#slides").css({"margin-top":(1080*(1-page))});
-	var counter=$(".slide").length;
-	$(".slide").each(function(i){
+	var console=window.console||{log:function(){}};
+	$(window).resize(function(){
+		$("#presentation").css({
+			"-moz-transform":"scale("+Math.min($(window).width()/1920,$(window).height()/1200)+")",
+			"-moz-transform-origin":" 0 0",
+			"-webkit-transform":"scale("+Math.min($(window).width()/1920,$(window).height()/1200)+")",
+			"-webkit-transform-origin":" 0 0"
+		});
+/*
+		$("#presentation").css("zoom",Math.min($(window).width()/1920,$(window).height()/1200));
+*/
+	}).resize();
+	var slides=$(".slide"),
+		counter=slides.length;
+	slides.each(function(i){
 		$(this).append("<span class='counter'>"+(i+1)+"/"+counter+"</span>");
 	});
-
+	var page=window.location.hash.replace("#slide-","")||1;
+	function gotopage(page){
+			slides.slice(0,page-1).addClass("past");
+			slides.slice(page-1).removeClass("past");
+			catlog_a.slice(0,page-1).addClass("past");
+			catlog_a.slice(page-1).removeClass("past");
+			catlog_a.removeClass("current");
+			catlog_a.eq(page-1).addClass("current");
+	}
 	$("#catelog").click(function(e){
 		if($(e.target).is("a")){
-			$("#slides").css({"margin-top":(1080*(1-$(e.target).attr("href").replace("#slide-","")))});
+			page=$(e.target).attr("href").replace("#slide-","");
+			gotopage(page);
 		}
 	});
 	var animated=false;
 	$("#prev").click(function(){
 		if(animated)return;
-		if (parseInt($("#slides").css("margin-top"))==0)return;
+		if(page==1)return;
 		animated=true;
-		$("#slides").animate({"margin-top":"+=1080"},0);
 		page--;
+		gotopage(page);
 		window.location.hash="#slide-"+page;
 		setTimeout(function(){animated=false},400)
 	});
 	$("#next").click(function(){
 		if(animated)return;
-		if (parseInt($("#slides").css("margin-top"))==(-$("#slides").height()+1080))return;
+		if (slides.eq(page-1).find(".step").length){
+			slides.eq(page-1).find(".step:first").removeClass("step");
+			return;
+		}
+		if(page==counter)return;
 		animated=true;
-		$("#slides").animate({"margin-top":"-=1080"},0);
 		page++;
+		gotopage(page);
 		window.location.hash="#slide-"+page;
 		setTimeout(function(){animated=false},400)
 	});
@@ -382,6 +487,7 @@
 	});
 	for (;deep>=0 ;deep-- )str.push("</li></ul>");
 	$("#catelog").html(str.join(""));
-</script>
+	var catlog_a=$("#catelog a");
+	gotopage(page);</script>
 </body>
 </html>
