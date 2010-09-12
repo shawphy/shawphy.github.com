@@ -393,6 +393,7 @@
 <script src="jquery.mousewheel.min.js"></script>
 <script>
 	var console=window.console||{log:function(){}};
+	// 全局缩放自适应窗口宽度。原始文档是1920x1200分辨率的
 	$(window).resize(function(){
 		$("#presentation").css({
 			"-moz-transform":"scale("+Math.min($(window).width()/1920,$(window).height()/1200)+")",
@@ -401,15 +402,22 @@
 			"-webkit-transform-origin":" 0 0"
 		});
 /*
+		本来可以简单使用 zoom 的，但是 Firefox 居然不支持这么简单好用的东西，只得舍近求远的使用 transform。
 		$("#presentation").css("zoom",Math.min($(window).width()/1920,$(window).height()/1200));
 */
 	}).resize();
+
+	// 为每张幻灯片增加页数显示
 	var slides=$(".slide"),
 		counter=slides.length;
 	slides.each(function(i){
 		$(this).append("<span class='counter'>"+(i+1)+"/"+counter+"</span>");
 	});
+
+	// 全局变量 page 为当前所在页数。如果地址中没有 hash 则默认第一页
 	var page=window.location.hash.replace("#slide-","")||1;
+
+	// 翻页函数，仅增减 class，由 CSS 3 实现动画效果
 	function gotopage(page){
 			slides.slice(0,page-1).addClass("past");
 			slides.slice(page-1).removeClass("past");
@@ -418,13 +426,19 @@
 			catlog_a.removeClass("current");
 			catlog_a.eq(page-1).addClass("current");
 	}
+
+	// 点击侧边目录快速跳转
 	$("#catelog").click(function(e){
 		if($(e.target).is("a")){
 			page=$(e.target).attr("href").replace("#slide-","");
 			gotopage(page);
 		}
 	});
+
+	// 最初实现的时候用的用于判断当前是否还在动画之中，现在可能已经不需要了。
 	var animated=false;
+
+	// 鼠标移动到上下屏幕边缘出现的上下翻页按钮
 	$("#prev").click(function(){
 		if(animated)return;
 		if(page==1)return;
@@ -447,12 +461,16 @@
 		window.location.hash="#slide-"+page;
 		setTimeout(function(){animated=false},400)
 	});
-	$(document).keypress(function(e){
-		if(e.which==8){
+
+	// 空格翻页 BackSpace 上一页。Page Up和Page Down也可使用
+	//滚动亦可
+	$(document).keydown(function(e){
+		console.log(e.which)
+		if(e.which==8||e.which==33){
 			$("#prev").click();
 			return false;
 		};
-		if(e.which==32){
+		if(e.which==32||e.which==34){
 			$("#next").click();
 			return false;
 		};
@@ -464,6 +482,8 @@
 		}
 		return false;
 	});
+
+	// 生成侧边栏目录，此处可能有比较多bug
 	var deep=0,lasttag="",str=["<ul>"];
 	$("#slides").find("h1,h2,h3,header").each(function(i,e){
 		if ((e.tagName=="H1"||e.tagName=="H2")&&deep==0){
@@ -490,6 +510,9 @@
 	for (;deep>=0 ;deep-- )str.push("</li></ul>");
 	$("#catelog").html(str.join(""));
 	var catlog_a=$("#catelog a");
-	gotopage(page);</script>
+
+	// 根据 hash 翻到某一页面。
+	gotopage(page);
+</script>
 </body>
 </html>
