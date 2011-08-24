@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8"/>
+	<title>卷积矩阵</title>
+	<style>
+		canvas{float:left;margin-right: 20px;}
+		form{float:left;width: 200px;}
+		form div input{width: 20px;margin: 15px;}
+		input{text-align: right;}
+	</style>
+</head>
+<body>
+	<canvas id="canvas" width="500" height="400">
+		Sorry ，您浏览器不支持 canvas 元素，请升级。
+	</canvas>
+	<form>
+		<select id="effectList" multiple="multiple" size="9">
+			<option value="0,0,0,0,1,0,0,0,0,1,0" selected="selected">none(原图)</option>
+			<option value="0,0,0,0,-1,0,0,0,0,1,255">inverse(反色)</option>
+			<option value="0,1,0,1,1,1,0,1,0,5,0">blur(模糊)</option>
+			<option value="0,-1,0,-1,5,-1,0,-1,0,1,0">sharpen(锐化)</option>
+			<option value="0,0,0,-1,1,0,0,0,0,1,127">hEdge(横向边缘增强)</option>
+			<option value="0,-1,0,0,1,0,0,0,0,1,127">vEdge(纵向边缘增强)</option>
+			<option value="0,-1,0,-1,4,-1,0,-1,0,1,127">edge(边缘增强)</option>
+			<option value="0,-1,0,-1,4,-1,0,-1,0,-1,255">edge(白色边缘增强)</option>
+			<option value="-6,-3,0,-3,1,3,0,3,6,1,0">emboss(浮雕)</option>
+			<option value="0,0,0,0,2,0,0,0,0,1,-255">contrast(增加对比度)</option>
+			<option value="0,-2,0,-2,20,-2,0,-2,0,10,-40">enhance(颜色加深)</option>
+			<option value="1,0,0,0,0,0,0,0,0,1,0">shift(位移)</option>
+		</select>
+		<div id="matrix">
+			<input/><input/><input/>
+			<input/><input/><input/>
+			<input/><input/><input/>
+		</div>
+		<label>divisor(除数):<input id="divisor"/></label>
+		<label>offset(偏移量):<input id="offset"/></label>
+		<button id="apply">应用</button>
+	</form>
+	<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+	<script>
+	// 载入图片
+	var image = new Image();
+	image.onload = function (){
+		$("#effectList").change();
+	}
+	image.src = "image.png";
+
+	// 绑定效果列表事件，改变后修改下方文本框中的数值
+	$("#effectList").bind("change",function (){
+		var tmp  = eval("["+this.value+"]");
+		$("#matrix input,#divisor,#offset").each(function (i){
+			this.value=tmp[i];
+		});
+		$("#apply").click();
+	});
+
+	// 应用卷积矩阵效果
+	$("#apply").click(function (){
+		// 获取矩阵数据以及除数因子和偏移
+		var matrix  =[],
+			divisor =$("#divisor").val()-0,
+			offset  = $("#offset").val()-0;
+		$("#matrix input").each(function (i){
+			matrix.push(this.value-0);
+		});
+
+		// 绘制原始图片
+		var canvas = $("#canvas")[0];
+		var context = canvas.getContext('2d');
+		context.drawImage(image, 0, 0);
+
+		// Firefox 下如果要读取本地文件，可以去掉下面这行代码的注释
+		//netscape.security.PrivilegeManager.enablePrivilege("UniversalBrowserRead");
+
+		// 获取图片数据，并把处理后的数据重新绘制到 canvas上去
+		var input = context.getImageData(0, 0, canvas.width, canvas.height);
+		var output=ConvolutionMatrix(input,matrix,divisor,offset);
+		context.putImageData(output, 0, 0);
+
+		return false;
+	});
+
+	// 计算卷积矩阵的函数
+	function ConvolutionMatrix(input, matrix, divisor, offset){
+		// 创建一个输出的 imageData 对象
+		var output = document.createElement("canvas")
+							 .getContext('2d').createImageData(input);
+
+		var w = input.width, h = input.height;
+		var iD = input.data, oD = output.data;
+		var m = matrix;
+
+		// 对除了边缘的点之外的内部点的 RGB 进行操作，透明度在最后都设为 255
+		for (var y = 1; y < h-1; y += 1) {
+			for (var x = 1; x < w-1; x += 1) {
+				for (var c = 0; c < 3; c += 1) {
+					var i = (y*w + x)*4 + c;
+					oD[i] = offset
+						+(m[0]*iD[i-w*4-4] + m[1]*iD[i-w*4] + m[2]*iD[i-w*4+4]
+						+ m[3]*iD[i-4]     + m[4]*iD[i]     + m[5]*iD[i+4]
+						+ m[6]*iD[i+w*4-4] + m[7]*iD[i+w*4] + m[8]*iD[i+w*4+4])
+						/ divisor;
+				}
+				oD[(y*w + x)*4 + 3] = 255; // 设置透明度
+			}
+		}
+		return output;
+	}
+	</script>
+</body>
+</html>
